@@ -1,0 +1,10 @@
+node_modules/
+.env
+<<<<<<< HEAD
+uploads/
+=======
+uploads/
+node_modules
+dist
+build
+>>>>>>> 3d4ee9f (backend ready for render)
