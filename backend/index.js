@@ -22,7 +22,7 @@ app.use(cors({
 const PORT = process.env.PORT;
 
 // db connection
-dbConnection(process.env.MONGO_URL);
+dbConnection(process.env.MONGO_URl);
 
 app.use("/api", testRouter);
 app.use("/api", imageRoute);
