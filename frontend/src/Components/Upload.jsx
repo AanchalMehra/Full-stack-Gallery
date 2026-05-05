@@ -19,12 +19,12 @@ function Upload({ refreshImages }) {
       const respond = api.post("/upload", formData, {
   headers: { "Content-Type": "multipart/form-data" }
 });
-      toast.success(respond.data.message);
+      toast.success(respond.data.msg);
       refreshImages();
       setFiles([]);
       setPreview([]);
     } catch (err) {
-      const msg = err.response?.data?.message || "Something went wrong ❌";
+      const msg = err.response?.data?.err || "Something went wrong ❌";
       toast.error(msg);
       console.log(err);
     } finally {
