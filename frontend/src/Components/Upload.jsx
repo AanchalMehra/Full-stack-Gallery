@@ -16,7 +16,9 @@ function Upload({ refreshImages }) {
     }
 
     try {
-      const respond = await api.post("/upload", formData);
+      const respond = api.post("/upload", formData, {
+  headers: { "Content-Type": "multipart/form-data" }
+});
       toast.success(respond.data.message);
       refreshImages();
       setFiles([]);

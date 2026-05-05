@@ -4,7 +4,11 @@ import cloudinary from "../configuration/cloudinary.js";
 
 
 export const handleUpload=async(req,res)=>{
+
       try{
+
+        console.log("FILES:", req.files);
+         console.log("BODY:", req.body);
         if (!req.files || req.files.length === 0) 
         {
            return res.status(400).json({ msg: "No files uploaded" });

@@ -12,13 +12,7 @@ const seedAdmin = async () => {
     await mongoose.connect(process.env.MONGO_URL);
     console.log("MongoDB connected");
 
-    // check if admin already exists
-    const existingAdmin = await User.findOne({ role: "ADMIN" });
-
-    if (existingAdmin) {
-      console.log("Admin already exists");
-      process.exit();
-    }
+    
 
     // hash password from env
     const hashedPassword = await bcrypt.hash(

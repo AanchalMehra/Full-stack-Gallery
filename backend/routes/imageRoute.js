@@ -11,7 +11,7 @@ import { auth } from "../middleware/AuthMiddleware.js";
 import { isAdmin } from "../middleware/AdminMiddleware.js";
 
 
-router.post("/upload",upload.array("image",3),auth,handleUpload );
+router.post("/upload",auth,upload.array("image",3),handleUpload );
 router.get("/display",auth,displayImages);
 router.delete("/delete/:id",auth,isAdmin,deleteImage);
 
