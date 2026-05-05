@@ -15,11 +15,11 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-  origin: "*",
+  origin: "https://gallery-hub-phi.vercel.app",
   credentials: true
 }));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ||8000;
 
 // db connection
 dbConnection(process.env.MONGO_URl);
