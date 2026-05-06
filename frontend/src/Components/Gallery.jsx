@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import api from "./api";
 import ImageModal from "./ImageModal";
 import LogoutButton from "./Logout";
+import { Trash2 } from "lucide-react";
 
 function Gallery({ refreshTrigger }) {
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -10,6 +11,7 @@ function Gallery({ refreshTrigger }) {
 
   const role = localStorage.getItem("role");
   const isAdmin = role === "ADMIN";
+  const firstName = localStorage.getItem("firstName");
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -46,7 +48,7 @@ function Gallery({ refreshTrigger }) {
 
   <div>
     <h2 className="text-4xl font-black text-slate-800">
-      Visual Stories
+      Welcome, {firstName || "User"}
     </h2>
     <div className="h-1.5 w-24 bg-gradient-to-r from-rose-500 to-orange-400 rounded-full mt-3"></div>
   </div>
@@ -104,9 +106,7 @@ function Gallery({ refreshTrigger }) {
                   transition-all duration-300 active:scale-90
                 "
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <Trash2 size={20} />
               </button>
             )}
 

@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Signup from './Components/SignUp.jsx';
 import Login from './Components/Login.jsx';
 import App from './App.jsx';
+import ProtectedRoute from './Components/protect.jsx';
 
 const router = createBrowserRouter([
    {
@@ -23,7 +24,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/gallery",
-    element: <App/>
+    element: (
+    <ProtectedRoute>
+    <App/>
+  </ProtectedRoute>)
   }
 ]);
 

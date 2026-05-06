@@ -57,7 +57,8 @@ export const handleLogin=async(req,res)=>{
       return res.status(200).json({
           msg: "Login successful",
           token,
-          role:user.role
+          role:user.role,
+          firstName: user.firstName
         })
 
 }
