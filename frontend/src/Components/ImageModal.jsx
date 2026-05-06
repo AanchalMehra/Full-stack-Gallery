@@ -36,7 +36,7 @@ function ImageModal({ image, onClose }) {
           alt="preview"
           onClick={(e) => e.stopPropagation()}
           className="
-            max-h-[85vh] sm:max-h-[90vh]
+            max-h-[80vh] sm:max-h-[90vh]
             max-w-[95vw] sm:max-w-[90vw]
             rounded-lg sm:rounded-2xl
             shadow-2xl

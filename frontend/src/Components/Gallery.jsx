@@ -39,7 +39,7 @@ function Gallery({ refreshTrigger }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-100 via-orange-50 to-amber-100 p-3 sm:p-8">
+    <div className="w-full bg-gradient-to-br from-rose-100 via-orange-50 to-amber-100 p-1 sm:p-4">
       
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-6 sm:mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -53,7 +53,7 @@ function Gallery({ refreshTrigger }) {
       </div>
 
       
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6">
         {uploadedImages.map((image, index) => (
           <div
             key={image._id}
@@ -62,7 +62,7 @@ function Gallery({ refreshTrigger }) {
               group relative 
               animate-in fade-in slide-in-from-bottom-4 duration-500
               bg-white/50 backdrop-blur-md 
-              rounded-2xl sm:rounded-[2.5rem] overflow-hidden 
+             rounded-xl sm:rounded-3xl overflow-hidden 
               border border-white/80 shadow-md sm:shadow-xl 
               hover:-translate-y-2 active:scale-95 sm:active:scale-100 transition-all duration-500
             "
