@@ -39,85 +39,67 @@ function Gallery({ refreshTrigger }) {
   };
 
   return (
-    /* Warm Sunset Gradient Background */
-    <div 
-    className="min-h-screen bg-from-rose-100 via-orange-50 to-amber-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-rose-100 via-orange-50 to-amber-100 p-3 sm:p-8">
       
-      {/* Header*/}
-      <div className="max-w-7xl mx-auto mb-12 flex justify-between items-center">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto mb-6 sm:mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 className="text-2xl sm:text-4xl font-black text-slate-800">
+            Welcome, {firstName || "User"}
+          </h2>
+          <div className="h-1 w-12 sm:w-24 bg-gradient-to-r from-rose-500 to-orange-400 rounded-full mt-1"></div>
+        </div>
+        <LogoutButton />
+      </div>
 
-  <div>
-    <h2 className="text-4xl font-black text-slate-800">
-      Welcome, {firstName || "User"}
-    </h2>
-    <div className="h-1.5 w-24 bg-gradient-to-r from-rose-500 to-orange-400 rounded-full mt-3"></div>
-  </div>
-
-  <LogoutButton />
-
-</div>
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-8">
         {uploadedImages.map((image, index) => (
           <div
             key={image._id}
             style={{ animationDelay: `${index * 100}ms` }}
             className="
               group relative 
-              animate-in fade-in slide-in-from-bottom-6 duration-700
+              animate-in fade-in slide-in-from-bottom-4 duration-500
               bg-white/50 backdrop-blur-md 
-              rounded-[2.5rem] overflow-hidden 
-              border border-white/80 shadow-xl 
-              hover:shadow-rose-200/60 hover:shadow-2xl 
-              hover:-translate-y-3 transition-all duration-500
+              rounded-2xl sm:rounded-[2.5rem] overflow-hidden 
+              border border-white/80 shadow-md sm:shadow-xl 
+              hover:-translate-y-2 active:scale-95 sm:active:scale-100 transition-all duration-500
             "
           >
             {/* Image Container */}
-            <div className="aspect-[4/5] overflow-hidden">
+            <div className="aspect-square sm:aspect-[4/5] overflow-hidden">
               <img
                 src={image.imageURL}
                 alt="uploaded"
-                className="
-                  w-full h-full object-cover
-                  cursor-pointer transition-transform duration-1000 
-                  group-hover:scale-110
-                "
+                onClick={() => setSelectedImage(image.imageURL)}
+                className="w-full h-full object-cover cursor-pointer"
               />
             </div>
 
-            {/* Warm Tint Overlay */}
-            <div className="
-              absolute inset-0 bg-gradient-to-t 
-              from-rose-900/40 via-transparent to-transparent 
-              opacity-0 group-hover:opacity-100 
-              transition-opacity duration-500 pointer-events-none
-            " />
-
-            {/* Admin Delete Button - Sunset Themed */}
+            {/* Admin Delete Button */}
             {isAdmin && (
               <button
-                onClick={() => handleDelete(image._id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDelete(image._id);
+                }}
                 className="
-                  absolute top-5 right-5
-                  w-10 h-10 flex items-center justify-center
-                  rounded-2xl bg-white/90 text-rose-500
-                  backdrop-blur-xl shadow-lg
-                  hover:bg-rose-600 hover:text-white hover:rotate-90
-                  transition-all duration-300 active:scale-90
+                  absolute top-2 right-2 sm:top-5 sm:right-5
+                  w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center
+                  rounded-lg sm:rounded-2xl bg-white/90 text-rose-500
+                  backdrop-blur-xl shadow-md z-10 hover:bg-rose-500 hover:text-white transition-colors
                 "
               >
-                <Trash2 size={20} />
+                <Trash2 size={14} className="sm:w-5 sm:h-5" />
               </button>
             )}
 
-            {/* View Button - Rose Glow */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <button 
-                  onClick={() => setSelectedImage(image.imageURL)}
-                  className="px-6 py-2.5 bg-rose-500 text-white rounded-full text-xs font-bold tracking-widest shadow-lg shadow-rose-500/40 hover:bg-rose-600 transition-colors uppercase"
-                >
-                  View
-                </button>
+            {/* "View" Button - Hidden on Mobile, Hover-only on Desktop */}
+            <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                <div className="px-6 py-2.5 bg-rose-500 text-white rounded-full text-xs font-bold tracking-widest shadow-lg">
+                  VIEW
+                </div>
             </div>
           </div>
         ))}
@@ -129,6 +111,6 @@ function Gallery({ refreshTrigger }) {
       />
     </div>
   );
-}
+} 
 
 export default Gallery;
